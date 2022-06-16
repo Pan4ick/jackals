@@ -37,4 +37,17 @@ public class ShowImages extends JFrame {
         screen.setIcon(ic);
         return screen;
     }
+    private static JLabel addImageToJLabel2(String filename, JLabel screen){
+        Mat img = Imgcodecs.imread(filename);
+        /* Преобразуем изображение в матрицу байтов с целью
+           получить массив байтов (пикселей). */
+        MatOfByte buf = new MatOfByte();
+        Imgcodecs.imencode(".png", img, buf);
+        /* Преобразуем массив пикселей в ImageIcon,
+           изображение которое будет отображатся. */
+        ImageIcon ic = new ImageIcon(buf.toArray());
+        // Привязываем изображение к контейнеру.
+        screen.setIcon(ic);
+        return screen;
+    }
 }
